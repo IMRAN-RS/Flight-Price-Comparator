@@ -16,7 +16,7 @@ public class FlightScraper {
     private final String cleartripUrl = "https://www.cleartrip.com/flights/results"; // Base MakeMyTrip URL
     private final String paytmUrl = "https://tickets.paytm.com/flights"; // Base Paytm URL
 
-    // Scrape flight details from MakeMyTrip
+    /
     public List<Map<String, String>> scrapeCleartrip(String travelDate) {
         System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver.exe"); // Set path to chromedriver
 
@@ -30,20 +30,20 @@ public class FlightScraper {
         List<Map<String, String>> flightData = new ArrayList<>();
 
         try {
-            // Set page load timeout to 20 seconds
+            
             driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
             // Set implicit wait for elements to 20 seconds
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
             // Hardcoded values for the fixed cities
-            String fromCityId = "BLR"; // Bangalore IATA code
-            String toCityId = "DEL";   // Delhi IATA code
+            String fromCityId = "BLR"; 
+            String toCityId = "DEL";   
 
             // Convert travel date from MM/DD/YYYY to DD/MM/YYYY for MakeMyTrip
             LocalDate date = LocalDate.parse(travelDate, DateTimeFormatter.ofPattern("MM/dd/yyyy")); // Parse input date
             String formattedDate = date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")); // Format to DD/MM/YYYY
 
-            // Construct the MakeMyTrip URL using the formatted date
+            
             String url = cleartripUrl + "?adults=1&childs=0&infants=0&class=Economy&depart_date=" + formattedDate
                     + "&from=" + fromCityId + "&to=" + toCityId + "&intl=n";
 
@@ -53,7 +53,7 @@ public class FlightScraper {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("fs-3 fw-400 c-neutral-900"))); // Adjust as needed
 
-            // Scrape flight data from MakeMyTrip
+          
             List<WebElement> flights = driver.findElements(By.cssSelector("fs-3 fw-400 c-neutral-900")); // Adjust the selector based on the actual MakeMyTrip structure
 
             for (WebElement flight : flights) {
@@ -93,9 +93,9 @@ public class FlightScraper {
         List<Map<String, String>> flightData = new ArrayList<>();
 
         try {
-            // Set page load timeout to 20 seconds
+         
             driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-            // Set implicit wait for elements to 20 seconds
+           
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
             // Format the travel date to YYYY-MM-DD for Paytm
