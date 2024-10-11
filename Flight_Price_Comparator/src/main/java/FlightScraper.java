@@ -44,8 +44,8 @@ public class FlightScraper {
             String formattedDate = date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")); // Format to DD/MM/YYYY
 
             
-            String url = cleartripUrl + "?adults=1&childs=0&infants=0&class=Economy&depart_date=" + formattedDate
-                    + "&from=" + fromCityId + "&to=" + toCityId + "&intl=n";
+            String url = cleartripUrl + "?origin=" + fromCityId + "&destination=" + toCityId + "&date=" + formattedDate +
+                          "&adults=1&childs=0&infants=0&class=Economy&intl=n";
 
             driver.get(url);
 
